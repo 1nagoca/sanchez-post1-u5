@@ -1,6 +1,6 @@
 package com.ejemplo.servlet;
 
-import com.ejemplo.model.tarea;
+import com.ejemplo.model.Tarea;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
@@ -12,14 +12,14 @@ import java.util.List;
 public class TareasServlet extends HttpServlet {
 
     // Lista en memoria para guardar las tareas durante el laboratorio
-    private final List<tarea> tareas = new ArrayList<>();
+    private final List<Tarea> tareas = new ArrayList<>();
     private int contadorId = 1;
 
     @Override
     public void init() throws ServletException {
         // Cargamos un par de tareas de ejemplo al iniciar el servidor
-        tareas.add(new tarea(contadorId++, "Leer documentación de Servlets"));
-        tareas.add(new tarea(contadorId++, "Implementar ciclo GET/POST"));
+        tareas.add(new Tarea(contadorId++, "Leer documentación de Servlets"));
+        tareas.add(new Tarea(contadorId++, "Implementar ciclo GET/POST"));
     }
 
     /** GET /tareas - Muestra la lista de tareas */
@@ -50,7 +50,7 @@ public class TareasServlet extends HttpServlet {
                 req.getRequestDispatcher("/WEB-INF/views/tareas.jsp").forward(req, resp);
                 return;
             }
-            tareas.add(new tarea(contadorId++, titulo.trim()));
+            tareas.add(new Tarea(contadorId++, titulo.trim()));
 
         } else if ("eliminar".equals(accion)) {
             int id = Integer.parseInt(req.getParameter("id"));
