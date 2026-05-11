@@ -1,11 +1,11 @@
 package com.ejemplo.model;
 
-public class tarea {
+public class Tarea {
     private int id;
     private String titulo;
     private boolean completada;
 
-    public tarea(int id, String titulo) {
+    public Tarea(int id, String titulo) {
         this.id = id;
         this.titulo = titulo;
         this.completada = false;
